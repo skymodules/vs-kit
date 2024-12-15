@@ -1,0 +1,64 @@
+{
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "always"
+    },
+    "editor.trimAutoWhitespace": true,
+    "editor.bracketPairColorization.enabled": true,
+    "[dockerfile]": {
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.formatOnSave": false,
+        "editor.codeActionWidget.includeNearbyQuickFixes": false,
+        "editor.codeActions.triggerOnFocusChange": false,
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "never"
+        },
+    },
+    "[shellscript]": {
+        "files.eol": "\n",
+        "editor.defaultFormatter": "foxundermoon.shell-format",
+        "editor.acceptSuggestionOnEnter": "on",
+        "editor.autoClosingComments": "always",
+        "editor.autoClosingBrackets": "always",
+    },
+    // File Configuration
+    "files.trimTrailingWhitespace": true,
+    "files.exclude": {
+        "**/.git": false,
+        "**/.git/*": false,
+        "**/.git/hooks": false,
+        "**/.git/info": true,
+        "**/.git/logs": true,
+        "**/.git/objects": true,
+        "**/.git/refs": true,
+        "**/.git/branches": true,
+        "**/.git/*.*": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/.terraform": true,
+        "**/.terraform.lock.hcl": true,
+        "**/temp/": true,
+        "**/tfoutput": true,
+        "**/tfplan": true,
+        "**/tfplan.json": true,
+    },
+    "files.associations": {
+        "bats": "shellscript"
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/.terraform": true,
+        "**/*.code-search": true,
+        "**/tfplan": true,
+        "**/tfplan.json": true
+    },
+    // Terminal Configuration
+    "terminal.integrated.fontFamily": "MesloLGM Nerd Font",
+    "terminal.integrated.shellIntegration.enabled": true,
+}

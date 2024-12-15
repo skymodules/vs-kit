@@ -1,0 +1,5 @@
+# Application MetaData
+app:
+  name: "My Application"
+  version: "1.0.0"
+  description: "My Application Description"

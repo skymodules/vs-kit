@@ -1,0 +1,42 @@
+{
+  "name": "@skymodules/vs-kit",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".",
+    "args": {
+      "IMAGE": "mcr.microsoft.com/devcontainers/go",
+      "TAG": "1.3-1.22-bookworm"
+    }
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=default",
+    "source=${localEnv:HOME}/.env,target=/home/vscode/.env,type=bind,consistency=default"
+  ],
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "remoteUser": "vscode",
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "mads-hartmann.bash-ide-vscode",
+        "jetmartin.bats",
+        "AykutSarac.jsoncrack-vscode",
+        "ms-vscode.makefile-tools",
+        "foxundermoon.shell-format",
+        "redhat.vscode-yaml",
+        "Trunk.io",
+        "stateful.runme",
+        "bierner.markdown-mermaid",
+        "yzhang.markdown-all-in-one",
+        "eamodio.gitlens",
+        "ms-azuretools.vscode-docker",
+        "GitHub.copilot",
+        "shd101wyy.markdown-preview-enhanced"
+      ]
+    }
+  },
+  "postCreateCommand": "dotenvx run --quiet -f ~/.env -- sh  ./.devcontainer/shell.sh"
+}

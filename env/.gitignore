@@ -1,0 +1,5 @@
+# Local Secrets File
+.env.local.secrets
+.env.pr.secrets
+.env.test.secrets
+.env.live.secrets
