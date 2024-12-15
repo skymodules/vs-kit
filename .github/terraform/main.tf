@@ -1,4 +1,5 @@
 # Repository
-data "github_repository" "example" {
-  full_name = "hashicorp/terraform"
+data "github_repository" "this" {
+  full_name = var.GITHUB_REPOSITORY
 }
+

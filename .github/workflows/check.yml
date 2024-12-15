@@ -22,6 +22,9 @@ jobs:
           tf_actions_comment: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_OWNER: ${{ github.repository_owner }}
+          TF_VAR_GITHUB_REPOSITORY: ${{ github.repository }}
+
       - name: "Terraform Validate"
         uses: hashicorp/terraform-github-actions@master
         with:
@@ -31,6 +34,7 @@ jobs:
           tf_actions_comment: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: "Terraform Plan"
         uses: hashicorp/terraform-github-actions@master
         with:
