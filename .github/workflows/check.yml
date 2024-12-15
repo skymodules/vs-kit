@@ -34,6 +34,8 @@ jobs:
           tf_actions_comment: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_OWNER: ${{ github.repository_owner }}
+          TF_VAR_GITHUB_REPOSITORY: ${{ github.repository }}
 
       - name: "Terraform Plan"
         uses: hashicorp/terraform-github-actions@master
@@ -44,7 +46,10 @@ jobs:
           tf_actions_comment: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: "Terraform Plan"
+          GITHUB_OWNER: ${{ github.repository_owner }}
+          TF_VAR_GITHUB_REPOSITORY: ${{ github.repository }}
+
+      - name: "Terraform Apply"
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
@@ -53,6 +58,8 @@ jobs:
           tf_actions_comment: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_OWNER: ${{ github.repository_owner }}
+          TF_VAR_GITHUB_REPOSITORY: ${{ github.repository }}
 
   trunk_check:
     name: 🌌👟 Trunk Code Quality Runner
