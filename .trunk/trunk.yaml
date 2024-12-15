@@ -40,8 +40,3 @@ ignore:
       - .vscode
       - .devcontainer
       - .github/**.yml
-  - linters: [markdownlint]
-    paths:
-      - examples/basic/*.md
-      - examples/multi-region/*.md
-      - README.md
