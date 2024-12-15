@@ -34,3 +34,14 @@ actions:
     - trunk-check-pre-push
     - trunk-fmt-pre-commit
     - trunk-upgrade-available
+ignore:
+  - linters: [ALL]
+    paths:
+      - .vscode
+      - .devcontainer
+      - .github/**.yml
+  - linters: [markdownlint]
+    paths:
+      - examples/basic/*.md
+      - examples/multi-region/*.md
+      - README.md
