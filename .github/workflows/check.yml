@@ -1,8 +1,23 @@
 name: checks
-run-name: ${{ github.actor }} is learning GitHub Actions
+run-name: repository-checks
 on: [push]
 jobs:
+  trunk_check:
+    name: 🌌👟 Trunk Code Quality Runner
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write # For trunk to post annotations
+      contents: read # For repo checkout
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Trunk Code Quality
+        uses: trunk-io/trunk-action@v1
+
   check-bats-version:
+    name: 🌌🧪 Bats Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

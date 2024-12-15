@@ -8,9 +8,7 @@
 
 - **VS Code Dev Containers**: Streamlined setup for development within containers.
 - **GitHub Integration**: Full support for GitHub Actions, SSH integration, and secrets management.
-- **Container Lifecycle Automation**: Build, lint, test, publish, and deploy containers with ease.
-- **Multi-Platform Deployment**: Supports AWS ECS, Azure, Google Cloud, Oracle, IBM, and other cloud platforms.
-- **12 Factor App Compliance**: Built with modern app development best practices in mind.
+
 
 ## Quick Start Guide
 
@@ -27,13 +25,6 @@ VSKit simplifies container development by integrating:
 - **Dev Containers**: Pre-configured container environments for VS Code.
 - **GitHub Actions**: Automate builds, tests, and deployments using GitHub CI/CD.
 - **GitHub Container Registry**: Manage container images directly from GitHub Packages.
-
-## To-Do List
-
-- [x] **Dev Container Lifecycle**: Automate build, lint, test, and publish steps.
-- [x] **GitHub Actions Integration**: Full CI/CD automation.
-- [x] **GitHub SSH Integration**: Secure integration using SSH keys.
-- [x] **Container Registry Integration**: Automatic container publishing with secrets management.
 
 ## Features
 
