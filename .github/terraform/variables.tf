@@ -22,33 +22,3 @@ variable "pr_environment" {
     enabled = true
   }
 }
-
-variable "live_environment" {
-  description = <<DESCRIPTION
-    Live Environment
-  DESCRIPTION
-  type = object({
-    name    = string
-    enabled = bool
-  })
-
-  default = {
-    name    = "live"
-    enabled = false
-  }
-}
-
-variable "test_environment" {
-  description = <<DESCRIPTION
-    Test environment
-  DESCRIPTION
-  type = object({
-    name    = string
-    enabled = bool
-  })
-
-  default = {
-    name    = "live"
-    enabled = false
-  }
-}

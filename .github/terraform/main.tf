@@ -16,7 +16,6 @@ resource "github_actions_variable" "project" {
 }
 
 
-
 # environments
 resource "github_repository_environment" "pr" {
   count               = var.pr_environment.enabled ? 1 : 0

@@ -33,7 +33,7 @@ lint:
       paths:
         - .vscode
         - .devcontainer
-        - .github
+        - .github/workflows
 actions:
   enabled:
     - trunk-announce
