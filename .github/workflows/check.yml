@@ -2,8 +2,8 @@ name: checks
 run-name: repository-checks
 on: [push]
 env:
-  tf_version: '1.10.2'
-  tf_working_dir: '.github/terraform'
+  tf_version: "1.10.2"
+  tf_working_dir: ".github/terraform"
 jobs:
   repository-setup:
     name: 🌌🔧 Repository Setup
@@ -13,43 +13,42 @@ jobs:
       - uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: "1.10.2"
-      - name: 'Terraform Init'
+      - name: "Terraform Init"
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
-          tf_actions_subcommand: 'init'
+          tf_actions_subcommand: "init"
           tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Terraform Validate'
-          uses: hashicorp/terraform-github-actions@master
-          with:
-            tf_actions_version: ${{ env.tf_version }}
-            tf_actions_subcommand: 'validate'
-            tf_actions_working_dir: ${{ env.tf_working_dir }}
-            tf_actions_comment: true
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Terraform Plan'
+      - name: "Terraform Validate"
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
-          tf_actions_subcommand: 'plan'
+          tf_actions_subcommand: "validate"
           tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Terraform Plan'
+      - name: "Terraform Plan"
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
-          tf_actions_subcommand: 'plan'
+          tf_actions_subcommand: "plan"
           tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      - name: "Terraform Plan"
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ env.tf_version }}
+          tf_actions_subcommand: "plan"
+          tf_actions_working_dir: ${{ env.tf_working_dir }}
+          tf_actions_comment: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   trunk_check:
     name: 🌌👟 Trunk Code Quality Runner
