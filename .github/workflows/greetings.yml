@@ -1,0 +1,16 @@
+name: Greetings
+
+on: [pull_request_target, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: "Thank you for opening your first issue with SkyModules! 🌌 We're excited to have your input as part of our growing constellation of cloud-native resources. Our team will review your issue promptly, and in the meantime, please check out our contribution guidelines to ensure your feedback aligns with our goals. Together, we can build solutions that shine!"
+          pr-message: "Thank you for your first pull request to SkyModules! ✨ Your contribution is helping us create a brighter constellation of cloud automation and AI resources. Our maintainers will review your PR soon. While you wait, take a look at our code of conduct and contribution guidelines to see how we collaborate. Welcome to the SkyModules community—your work truly makes a difference!"
