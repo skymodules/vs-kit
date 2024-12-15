@@ -1,0 +1,3 @@
+provider "github" {
+  # Configuration options
+}

@@ -27,5 +27,7 @@ RUN trunk --version
 
 RUN /home/vscode/install-hashicorp.sh vault
 RUN vault --version
+RUN /home/vscode/install-hashicorp.sh terraform
+RUN terraform --version
 
 CMD ["dotenvx", "run", "--", "node", "index.js"]
