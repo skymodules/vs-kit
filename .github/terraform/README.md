@@ -1,7 +1,7 @@
 # GitHub Repository Terraform
 
-Terraform managed GitHub Repository automation for this repoisitory. Use this terraform workspace
-to setup your GitHub repository with the following features:
+Terraform managed GitHub Repository automation for the setup of this repoisitory. Use this terraform workspace
+to setup the GitHub repository with the following features:
 
 - [ ] GitHub Actions
 - [ ] GitHub Branch Protection

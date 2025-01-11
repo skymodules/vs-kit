@@ -6,14 +6,15 @@ env:
   tf_working_dir: ".github/terraform"
 jobs:
   repository-setup:
-    name: 🌌🔧 Repository Setup
+    name: 🌌🔧 Repository Automation
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: "1.10.2"
-      - name: "Terraform Init"
+          terraform_version: ${{ env.tf_version }}
+
+      - name: "🌌🏞️ Terraform Init (version ${{ env.tf_version }})"
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
@@ -26,7 +27,7 @@ jobs:
           TF_VAR_GITHUB_OWNER: ${{ github.repository_owner }}
           TF_VAR_GITHUB_REPOSITORY: ${{ github.repository }}
 
-      - name: "Terraform Validate"
+      - name: "🌌🏞️ Terraform Validate"
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
@@ -39,7 +40,7 @@ jobs:
           TF_VAR_GITHUB_OWNER: ${{ github.repository_owner }}
           TF_VAR_GITHUB_REPOSITORY: ${{ github.repository }}
 
-      - name: "Terraform Plan"
+      - name: "🌌🏞️ Terraform Plan"
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
@@ -52,7 +53,7 @@ jobs:
           TF_VAR_GITHUB_OWNER: ${{ github.repository_owner }}
           TF_VAR_GITHUB_REPOSITORY: ${{ github.repository }}
 
-      - name: "Terraform Apply"
+      - name: "🌌🏞️ Terraform Apply"
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}

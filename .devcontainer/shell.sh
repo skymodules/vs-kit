@@ -25,7 +25,7 @@ manage_ssh_key() {
 
 # Function to check if the SSH key is synced with GitHub
 sync_ssh_key_to_github() {
-	GITHUB_KEYS=$(gh ssh-key list | grep $KEY_COMMENT)
+	GITHUB_KEYS=$(gh ssh-key list | grep "$KEY_COMMENT")
 
 	if [ -z "$GITHUB_KEYS" ]; then
 		echo "Syncing SSH key to GitHub"

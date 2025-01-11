@@ -9,14 +9,13 @@
 - **VS Code Dev Containers**: Streamlined setup for development within containers.
 - **GitHub Integration**: Full support for GitHub Actions, SSH integration, and secrets management.
 
-
 ## Quick Start Guide
 
 Github Authentication:
 
 In your host system
 
-Run the [DevContainer]() in VS Code to get started with VSKit. The DevContainer provides a pre-configured environment with all the tools you need to start developing containerized applications. You can then use the integrated GitHub Actions to automate your CI/CD pipelines and deploy your containers to the cloud.
+Run the [DevContainer](https://code.visualstudio.com/docs/devcontainers/containers) in VS Code to get started with [VS-Kit](https://github.com/skymodules/vs-kit). The DevContainer provides a pre-configured environment with all the tools you need to start developing containerized applications. You can then use the integrated [GitHub Actions](https://docs.github.com/en/actions) to automate your CI/CD pipelines and deploy your containers to the cloud.
 
 ## How It Works
 
@@ -28,26 +27,27 @@ VSKit simplifies container development by integrating:
 
 ## Features
 
-- [VS Code](https://code.visualstudio.com/): Development environment.
-- [Makefile](https://www.gnu.org/software/make/): Project automation and task management.
+- **Local Automation**
 
-### Local Development
+  - [VS Code](https://code.visualstudio.com/): Development environment.
+  - [Makefile](https://www.gnu.org/software/make/): Project automation and task management.
+  - [Trunk.io](https://trunk.io/): Code quality and security analysis.
+  - [CodeQL](https://securitylab.github.com/tools/codeql): Code quality and security analysis.
+  - [Prettier](https://prettier.io/): Code formatting.
+  - [ShellCheck](https://www.shellcheck.net/): Shell script analysis.
+  - [YAML Lint](https://yamllint.readthedocs.io/en/stable/): YAML linting.
+
+- **GitHub Automation**
+  - [Github Terraform](.github/workflows): GitHub repository automation via Terraform.
+  - [Github Workflows](.github/workflows): CI/CD, Project, and other workflows.
+
+### Local Automation
 
 Dev Containers
 
 - [DevContainer](https://code.visualstudio.com/docs/remote/containers): Pre-configured container environments for VS Code.
   - [Ubuntu 22](https://hub.docker.com/_/ubuntu): Base image for development.
   - [Microsoft Artifact Registry](https://mcr.microsoft.com/en-us/)
-
-Quality
-
-- [Trunk.io](https://trunk.io/): Code quality and security analysis.
-- [ActionLint]()
-- [CodeQL](https://securitylab.github.com/tools/codeql): Code quality and security analysis.
-- [Prettier](https://prettier.io/): Code formatting.
-- [ShellCheck](https://www.shellcheck.net/): Shell script analysis.
-- [YAML Lint](https://yamllint.readthedocs.io/en/stable/): YAML linting.
-
 
 ### Configuration
 
@@ -68,7 +68,6 @@ Secrets Management
 
 ### GitHub Actions
 
-
 ### 1. Codebase
 
 One codebase tracked in GitHub:
@@ -87,7 +86,8 @@ Declare and isolate dependencies:
 Configuration through environment variables:
 
 - **[DotEnvX](https://dotenvx.com/)**: Manage environment variables.
-  - **[GitHub Actions](https://dotenvx.com/docs/cis/github-actions)
+
+  - \*\*[GitHub Actions](https://dotenvx.com/docs/cis/github-actions)
 
 - **[Vault](https://www.hashicorp.com/products/vault)**: Secure secret management.
   - **[GitHub Actions](https://github.com/hashicorp/vault-action)**

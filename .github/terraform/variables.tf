@@ -10,7 +10,7 @@ variable "GITHUB_REPOSITORY" {
 
 variable "pr_environment" {
   description = <<DESCRIPTION
-    The name of the environment to deploy the pull request to.
+    PR Environment settings
   DESCRIPTION
   type = object({
     name    = string
@@ -19,6 +19,36 @@ variable "pr_environment" {
 
   default = {
     name    = "pr"
+    enabled = true
+  }
+}
+
+variable "test_environment" {
+  description = <<DESCRIPTION
+    Test Environment settings
+  DESCRIPTION
+  type = object({
+    name    = string
+    enabled = bool
+  })
+
+  default = {
+    name    = "test"
+    enabled = true
+  }
+}
+
+variable "live_environment" {
+  description = <<DESCRIPTION
+    Live Environment settings
+  DESCRIPTION
+  type = object({
+    name    = string
+    enabled = bool
+  })
+
+  default = {
+    name    = "live"
     enabled = true
   }
 }
