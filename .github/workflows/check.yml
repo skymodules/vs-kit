@@ -6,6 +6,7 @@ env:
   tf_working_dir: ".github/terraform"
 jobs:
   repository-setup:
+    permissions: write-all
     name: 🌌🔧 Repository Automation
     runs-on: ubuntu-latest
     steps:
