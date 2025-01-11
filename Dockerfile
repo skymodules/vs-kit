@@ -9,6 +9,7 @@ RUN curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opent
 RUN tar -xvf otelcol_0.117.0_linux_amd64.tar.gz
 
 # copy source pattern
+# trunk-ignore(hadolint/DL3059)
 RUN mkdir /app
 WORKDIR /app
 COPY src/ .
