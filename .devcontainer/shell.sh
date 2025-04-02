@@ -33,10 +33,54 @@ sync_ssh_key_to_github() {
 	fi
 }
 
+validate_tooling() {
+	# make sure dotenvx is installed
+	if ! command -v dotenvx &>/dev/null; then
+		echo "🛑 Shell Error: dotenvx could not be found. Please install it first."
+		exit 1
+	fi
+
+	# make sure doppler is installed
+	if ! command -v doppler &>/dev/null; then
+		echo "🛑 Shell Error: doppler could not be found. Please install it first."
+		exit 1
+	fi
+
+	# make sure gh is installed
+	if ! command -v gh &>/dev/null; then
+		echo "🛑 Shell Error: gh could not be found. Please install it first."
+		exit 1
+	fi
+}
+
+setup_ssh() {
+	start_ssh_agent
+	echo "🔑 SSH agent started."
+
+	manage_ssh_key
+	echo "🔑 SSH key managed."
+
+	sync_ssh_key_to_github
+	echo "🔑 SSH key synced to GitHub."
+}
+
 main() {
-	start_ssh_agent && echo "🔑 SSH agent started."
-	manage_ssh_key && echo "🔑 SSH key managed."
-	sync_ssh_key_to_github && echo "🔑 SSH key synced to GitHub."
+	set -e # Exit immediately if any command fails
+
+	# validate tooling
+	validate_tooling || {
+		echo "🛑 Shell Error: Required tools are not installed. Please install them first."
+		exit 1
+	}
+
+	# authenticate with GitHub CLI
+	dotenvx run --quiet -f /home/${USER}/.env -- doppler run -- doppler secrets get GH_TOKEN --plain | gh auth login --with-token
+
+	# setup SSH key
+	setup_ssh || {
+		echo "🛑 Shell Error: SSH key setup failed."
+		exit 1
+	}
 }
 
 main "$@"

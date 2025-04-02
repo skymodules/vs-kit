@@ -1,3 +1,4 @@
 # Temporary installation directory
 ./tempx
 ./tempx/*
+node_modules

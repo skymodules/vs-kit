@@ -7,33 +7,30 @@ cli:
 plugins:
   sources:
     - id: trunk
-      ref: v1.6.5
+      ref: v1.6.7
       uri: https://github.com/trunk-io/plugins
 # Many linters and tools depend on runtimes - configure them here. (https://docs.trunk.io/runtimes)
 runtimes:
   enabled:
     - go@1.21.0
-    - node@18.12.1
+    - node@18.20.5
     - python@3.10.8
 # This is the section where you manage your linters. (https://docs.trunk.io/check/configuration)
 lint:
   enabled:
-    - actionlint@1.7.4
-    - checkov@3.2.296
+    - actionlint@1.7.7
+    - checkov@3.2.395
+    - dotenv-linter@3.3.0
     - git-diff-check
     - hadolint@2.12.1-beta
-    - markdownlint@0.42.0
-    - prettier@3.3.3
+    - markdownlint@0.44.0
+    - osv-scanner@2.0.0
+    - prettier@3.5.3
     - shellcheck@0.10.0
     - shfmt@3.6.0
-    - trufflehog@3.83.7
-    - yamllint@1.35.1
-  ignore:
-    - linters: [ALL]
-      paths:
-        - .vscode
-        - .devcontainer
-        - .github/workflows
+    - tflint@0.56.0
+    - trufflehog@3.88.20
+    - yamllint@1.37.0
 actions:
   enabled:
     - trunk-announce

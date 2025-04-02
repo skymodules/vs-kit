@@ -1,4 +1,4 @@
-name: Containerized CI
+name: 🏗️ Containerized CI
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -8,7 +8,7 @@ env:
 on:
   push:
     branches:
-    - feature/*
+      - feature/*
 
 jobs:
   build:
@@ -24,13 +24,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.x"
+
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
       - name: Install cosign
         if: github.event_name != 'pull_request'
         uses: sigstore/cosign-installer@59acb6260d9c0ba8f4a2f9d9b48431a222b68e20 #v3.5.0
         with:
-          cosign-release: 'v2.2.4'
+          cosign-release: "v2.2.4"
 
       # Set up BuildKit Docker container builder to be able to build
       # multi-platform images and export cache
