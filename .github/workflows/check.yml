@@ -2,8 +2,8 @@ name: checks
 run-name: repository-checks
 on: [push]
 env:
-  tf_version: "1.10.2"
-  tf_working_dir: ".github/terraform"
+  tf_version: 1.10.2
+  tf_working_dir: .github/terraform
 jobs:
   repository-setup:
     permissions: write-all
@@ -19,7 +19,7 @@ jobs:
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
-          tf_actions_subcommand: "init"
+          tf_actions_subcommand: init
           tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: true
         env:
@@ -28,11 +28,11 @@ jobs:
           TF_VAR_GITHUB_OWNER: ${{ github.repository_owner }}
           TF_VAR_GITHUB_REPOSITORY: ${{ github.repository }}
 
-      - name: "🌌🏞️ Terraform Validate"
+      - name: 🌌🏞️ Terraform Validate
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
-          tf_actions_subcommand: "validate"
+          tf_actions_subcommand: validate
           tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: true
         env:
