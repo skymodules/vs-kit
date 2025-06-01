@@ -1,4 +1,7 @@
-FROM node:10-alpine
+FROM node:20-alpine
+
+ARG GIT_COMMIT
+ARG GIT_BRANCH
 
 
 # Healthcheck
@@ -8,13 +11,19 @@ HEALTHCHECK --interval=5s --timeout=3s --retries=3 \
 # NodeJS Setup
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 WORKDIR /home/node/app
-COPY package*.json ./
+
+# TypeScript Setup
+RUN npm install -g typescript
 
 USER node
-RUN npm install --only=production
-COPY --chown=node:node ./src .
 
-RUN npm run build
+COPY --chown=node:node . .
+
+RUN npm cache clean --force && \
+    npm install --unsafe-perm && \
+    npm run build
+
+RUN npm prune --omit=dev
 
 EXPOSE 8080
-CMD [ "node", "./dist/index.js" ]
+CMD [ "node", "-r", "./dist/src/telemetry.js ./dist/src/index.js" ]

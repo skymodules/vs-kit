@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # set default install directory
-DEFAULT_INSTALL_DIR="/home/vscode/hashicorp"
+DEFAULT_INSTALL_DIR="${HOME}/hashicorp"
 product=${1:-terraform}
 version=${2-}
 

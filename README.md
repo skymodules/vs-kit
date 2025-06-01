@@ -22,11 +22,10 @@ This kit uses [Dev Containers]() and has a complete automated local development 
 
 This kit uses the following SaaS dependencies. You will need to setup an account with each of them:
 
-> For an automated pattern see [SaaS Kit]()
+> For an automated pattern see [SaaS Kit](https://hashnode)
 
 - [doppler](https://doppler.com/) - [Create an account and a Project](https://docs.doppler.com/docs/create-project) at Doppler.
 - [GitHub](https://github.com) - This kit uses GitHub as the primary CI/CD platform. You will need to setup a GitHub account and create a repository for your project. This repository will use terraform to apply settings to the repository. See `.github/workflows/check.yml` for more details.
-- [DataDog](https://www.datadoghq.com/) - This kit uses DataDog as the default collector/exporter for Opentelemetry. You will need to setup a DataDog account and create an API key. See the [DataDog](https://docs.datadoghq.com/agent/docker/?tab=hostagentv6) documentation for more details.
 
 **Setup VS Code**:
 

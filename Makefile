@@ -28,11 +28,29 @@ default:
 	@echo "🪐 APPLICATION_NAME: $(APPLICATION_NAME)"
 	@echo "🦖 GIT COMMIT: $(GIT_COMMIT)"
 	@echo "🦖 GIT BRANCH: $(GIT_BRANCH)"
+	@echo "🦖 Git User Name: $(shell git config user.name)"
+	@echo "🦖 Git User Email: $(shell git config user.email)"
+	@echo "Doppler Project: $(DOPPLER_PROJECT)"
 	@echo "🐳 CONTAINER_NAME: $(CONTAINER_NAME)"
 	@echo "🐳 IMAGE_NAME: $(IMAGE_NAME)"
 	@echo "🐳 TAG: $(TAG)"
 
-.PHONY: check
+
+.PHONY: devcontainer
+# build the devcontainer and veriyf the container works
+devcontainer:
+	@dotenvx run --quiet -f $(XFILES) -- devcontainer build \
+		--workspace-folder "."
+	echo "🐳 Devcontainer built"
+
+.PHONY: devcontainer/test
+# run tests inside the devcontainer
+devcontainer/test: devcontainer
+	dotenvx run --quiet -f $(XFILES) -- devcontainer exec \
+		--workspace-folder "." \
+		--container-id "$(CONTAINER_NAME)" \
+		--cmd "npm"
+
 # combines linting, security, and secrets checks
 check:
 	@dotenvx run --quiet -f $(XFILES) -- trunk check --fix
@@ -40,7 +58,7 @@ check:
 
 .PHONY: build
 # build the docker image
-build: node/build
+build:
 	@dotenvx run --quiet -f $(XFILES) -- docker build \
 		--build-arg GIT_COMMIT=$(GIT_COMMIT) \
 		--build-arg GIT_BRANCH=$(GIT_BRANCH) \
@@ -50,6 +68,11 @@ build: node/build
 	@echo "🐳 Image built: $(IMAGE_NAME)"
 	@docker images --tree
 
+.PHONY: run
+# run the docker image and nodeJS application
+run:
+	@dotenvx run -f $(XFILES) -- doppler run -p $(DOPPLER_PROJECT) -c $(DOPPLER_CONFIG) -- npm run start
+	@echo "🐳 Container running: $(CONTAINER_NAME)"
 
 .PHONY: test
 # run tests

@@ -1,6 +1,6 @@
 {
   "watch": ["src/**"],
-  "ext": "*.ts, *.json, *.prompty",
+  "ext": "*.ts, *.json",
   "ignore": ["*.js", "node_modules"],
   "exec": "npm run restart"
 }

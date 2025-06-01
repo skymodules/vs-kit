@@ -10,36 +10,24 @@
     }
   },
   "mounts": [
-    "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=default",
     "source=${localEnv:HOME}/.env,target=/home/node/.env,type=bind,consistency=default"
   ],
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {},
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
+  "containerEnv": {
+    "DOPPLER_PROJECT": "org",
+    "DOPPLER_CONFIG" : "pr_github"
+  },
   "remoteUser": "node",
   "customizations": {
     "vscode": {
-      "settings": {},
-      "extensions": [
-        "dotenv.dotenvx-vscode",
-        "github.vscode-github-actions",
-        "mads-hartmann.bash-ide-vscode",
-        "jetmartin.bats",
-        "AykutSarac.jsoncrack-vscode",
-        "ms-vscode.makefile-tools",
-        "foxundermoon.shell-format",
-        "redhat.vscode-yaml",
-        "Trunk.io",
-        "stateful.runme",
-        "bierner.markdown-mermaid",
-        "yzhang.markdown-all-in-one",
-        "eamodio.gitlens",
-        "ms-azuretools.vscode-docker",
-        "GitHub.copilot",
-        "shd101wyy.markdown-preview-enhanced",
-        "hashicorp.terraform"
-      ]
+      "settings": {
+        "editor.bracketPairColorization.enabled": true,
+        "editor.matchBrackets": "always"
+      },
+      "extensions": []
     }
   },
   "postCreateCommand": "./.devcontainer/shell.sh"

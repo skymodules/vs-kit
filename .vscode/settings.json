@@ -5,7 +5,7 @@
     "source.organizeImports": "always"
   },
   "editor.trimAutoWhitespace": true,
-  "editor.bracketPairColorization.enabled": true,
+  "editor.bracketPairColorization.enabled":  false,
   "[dockerfile]": {
     "editor.quickSuggestions": {
       "strings": true

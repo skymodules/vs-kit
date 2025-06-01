@@ -1,33 +1,34 @@
-ARG TAG="dev-3.12-bookworm"
-ARG IMAGE="mcr.microsoft.com/devcontainers/python"
+ARG TAG="dev-22"
+ARG IMAGE="mcr.microsoft.com/devcontainers/typescript-node"
 ARG VSCODE_USER="vscode"
 
 FROM ${IMAGE}:${TAG}
 
+# dynamic build args
+ARG VSCODE_USER
+
+
 USER root
-RUN mkdir -p /home/${VSCODE_USER}/tempx/
-COPY install.sh /home/${VSCODE_USER}/install.sh
-RUN ls -l /home/${VSCODE_USER}/ && chmod +x /home/${VSCODE_USER}/install.sh
 
-COPY install-hashicorp.sh /home/${VSCODE_USER}/install-hashicorp.sh
-RUN ls -l /home/${VSCODE_USER}/ && chmod +x /home/${VSCODE_USER}/install-hashicorp.sh
+# trunk-ignore(hadolint/DL4006)
+RUN curl -fsS https://dotenvx.sh | sh
+RUN (curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh || wget -t 3 -qO- https://cli.doppler.com/install.sh) | sudo sh
 
-COPY shell.sh /home/${VSCODE_USER}/shell.sh
-RUN ls -l /home/${VSCODE_USER}/ && chmod +x /home/${VSCODE_USER}/shell.sh
-RUN chown ${VSCODE_USER}:${VSCODE_USER} /usr/local/bin
+COPY ssh.sh /home/${VSCODE_USER}/ssh.sh
+RUN ls -l /home/${VSCODE_USER}/ && chmod +x /home/${VSCODE_USER}/ssh.sh
+
 
 # User
 USER ${VSCODE_USER}
-
 WORKDIR /workspace
 RUN mkdir -p /workspace/temp
+RUN dotenvx --version
+RUN doppler --version
 
-WORKDIR /workspace/temp
-RUN /home/${VSCODE_USER}/install.sh
-RUN trunk --version
 
-RUN /home/${VSCODE_USER}/install-hashicorp.sh vault
-RUN vault --version
-RUN /home/${VSCODE_USER}/install-hashicorp.sh terraform
-RUN terraform --version
-
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+    CMD trunk --version && \
+    doppler --version && \
+    dotenvx --version && \
+    vault --version && \
+    terraform --version || exit 1
