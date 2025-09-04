@@ -1,0 +1,9 @@
+{
+    "editor.formatOnSave": true,
+    "material-icon-theme.folders.associations": {
+        ".github/instructions": "github"
+    },
+    "material-icon-theme.files.associations": {
+        "*.instructions.md": "Copilot"
+    }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "@skymodules/vs-kit2",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".",
+    "args": {
+      "IMAGE": "mcr.microsoft.com/devcontainers/typescript-node",
+      "TAG": "dev-22",
+      "VSCODE_USER": "node"
+    }
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.env,target=/home/node/.env,type=bind,consistency=default"
+  ],
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "containerEnv": {
+    "DOPPLER_PROJECT": "devcontainers",
+    "DOPPLER_CONFIG": "pr_personal",
+    "VSKIT_PROJECT_NAME": "vs-kit2",
+    "VSKIT_APPLICATION_NAME": "vs-kit2"
+  },
+  "remoteUser": "node",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.bracketPairColorization.enabled": true,
+        "editor.matchBrackets": "always"
+      },
+      "extensions": []
+    }
+  },
+  "postStartCommand": "./.devcontainer/postStartCommand.sh"
+}
